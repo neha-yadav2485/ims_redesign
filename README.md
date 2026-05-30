@@ -2,7 +2,7 @@
 
 A modern, premium redesign of the [IMS Delhi centre page](https://www.imsindia.com/center/delhi/) — built as a personal project to demonstrate what a polished, conversion-focused coaching institute website can look like.
 
-**Live Preview →** *(add your GitHub Pages / Netlify link here)*
+**Live Preview →** ims-redesign.vercel.app
 
 ---
 
