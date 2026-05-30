@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMS Delhi — India's Premier Test Prep Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f2eb;
+    --gold: #c8972a;
+    --gold-light: #e8b84b;
+    --rust: #c74b2a;
+    --sage: #3d6b4f;
+    --sky: #1a4a6e;
+    --muted: #6b6456;
+    --border: rgba(10,10,15,0.12);
+    --card-bg: #faf8f3;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(245,242,235,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: padding .3s;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.5rem;
+    letter-spacing: -0.02em; color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: .85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: var(--paper) !important;
+    padding: .55rem 1.4rem; border-radius: 2rem;
+    font-weight: 500 !important; letter-spacing: 0.02em !important;
+    text-transform: none !important; font-size: .9rem !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+  /* ─── HERO ─── */
+  #home {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 85% 50%, rgba(200,151,42,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 50% at 5% 80%, rgba(26,74,110,0.07) 0%, transparent 60%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--gold); color: var(--ink);
+    padding: .35rem 1rem; border-radius: 2rem;
+    font-size: .78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1.8rem;
+  }
+  .hero-badge::before { content: '★'; }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.1rem; line-height: 1.7;
+    color: var(--muted); max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    padding: .9rem 2.2rem; border-radius: .4rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: .95rem;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: transform .2s, background .2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1.5px solid var(--ink); color: var(--ink);
+    padding: .9rem 2.2rem; border-radius: .4rem;
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: .95rem; text-decoration: none;
+    transition: transform .2s, background .2s, color .2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 2rem;
+    font-weight: 800; color: var(--ink); line-height: 1;
+  }
+  .stat-label { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+
+  .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
+  .hero-card-stack { position: relative; width: 380px; height: 440px; }
+  .hcard {
+    position: absolute; border-radius: 1.2rem;
+    padding: 1.8rem; box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+  .hcard-1 {
+    background: var(--sky); color: white;
+    width: 320px; top: 0; right: 0;
+    animation: float1 4s ease-in-out infinite;
+  }
+  .hcard-2 {
+    background: var(--ink); color: white;
+    width: 290px; bottom: 0; left: 0;
+    animation: float2 4s ease-in-out infinite;
+  }
+  .hcard-3 {
+    background: var(--gold); color: var(--ink);
+    width: 200px; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    animation: float3 3s ease-in-out infinite;
+  }
+  @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+  @keyframes float3 { 0%,100%{transform:translate(-50%,-50%) rotate(-3deg)} 50%{transform:translate(-50%,-50%) rotate(3deg)} }
+  .hcard-exam { font-size: .75rem; opacity: .6; text-transform: uppercase; letter-spacing: .1em; }
+  .hcard-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin: .4rem 0; }
+  .hcard-score { font-size: .9rem; opacity: .8; }
+  .hcard-icon { font-size: 2rem; margin-bottom: .5rem; }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--ink); color: var(--paper);
+    padding: .9rem 0; overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .ticker-inner {
+    display: flex; width: max-content;
+    animation: ticker 25s linear infinite;
+  }
+  .ticker-item {
+    white-space: nowrap; padding: 0 3rem;
+    font-size: .85rem; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .ticker-item span { color: var(--gold); margin-right: .5rem; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ─── COURSES ─── */
+  #courses { padding: 7rem 4rem; }
+  .section-label {
+    font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: .8rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 1rem; line-height: 1.1;
+  }
+  .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 580px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .course-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 1rem; padding: 2rem;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .course-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0);
+    transition: transform .25s;
+  }
+  .course-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.1); border-color: var(--gold); }
+  .course-card:hover::after { transform: scaleX(1); }
+  .course-tag {
+    display: inline-block; padding: .25rem .75rem;
+    border-radius: 2rem; font-size: .72rem;
+    font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .tag-mba { background: rgba(26,74,110,.1); color: var(--sky); }
+  .tag-law { background: rgba(61,107,79,.1); color: var(--sage); }
+  .tag-intl { background: rgba(200,151,42,.12); color: #9a6e10; }
+  .tag-engg { background: rgba(199,75,42,.1); color: var(--rust); }
+  .tag-ug { background: rgba(100,80,150,.1); color: #5a4090; }
+  .course-name {
+    font-family: 'Syne', sans-serif; font-size: 1.25rem;
+    font-weight: 700; margin-bottom: .6rem;
+  }
+  .course-desc { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+  .course-exams {
+    margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: .4rem;
+  }
+  .exam-pill {
+    font-size: .72rem; padding: .25rem .65rem;
+    border: 1px solid var(--border); border-radius: 2rem;
+    color: var(--muted);
+  }
+
+  /* ─── WHY IMS ─── */
+  #why {
+    padding: 7rem 4rem;
+    background: var(--ink); color: var(--paper);
+    position: relative; overflow: hidden;
+  }
+  #why::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,151,42,.15) 0%, transparent 70%);
+  }
+  #why .section-title { color: var(--paper); }
+  #why .section-label { color: var(--gold-light); }
+  #why .section-sub { color: rgba(245,242,235,.55); }
+
+  .why-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; position: relative; z-index: 1;
+  }
+  .why-card {
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 1rem; padding: 2rem;
+    transition: border-color .2s, background .2s;
+  }
+  .why-card:hover { border-color: var(--gold); background: rgba(200,151,42,.05); }
+  .why-icon {
+    width: 48px; height: 48px; border-radius: .7rem;
+    background: rgba(200,151,42,.15); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.2rem;
+  }
+  .why-title {
+    font-family: 'Syne', sans-serif; font-size: 1.05rem;
+    font-weight: 700; margin-bottom: .6rem; color: var(--paper);
+  }
+  .why-text { font-size: .9rem; color: rgba(245,242,235,.6); line-height: 1.7; }
+
+  /* ─── STATS STRIP ─── */
+  .stats-strip {
+    background: var(--gold); color: var(--ink);
+    padding: 3.5rem 4rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    text-align: center; gap: 2rem;
+  }
+  .strip-num {
+    font-family: 'Syne', sans-serif; font-size: 3rem;
+    font-weight: 800; line-height: 1;
+  }
+  .strip-label { font-size: .85rem; font-weight: 500; margin-top: .4rem; opacity: .75; }
+
+  /* ─── MENTORS ─── */
+  #team { padding: 7rem 4rem; }
+  .mentors-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 0;
+  }
+  .mentor-card {
+    border: 1px solid var(--border);
+    border-radius: 1rem; overflow: hidden;
+    background: var(--card-bg);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .mentor-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+  .mentor-img-wrap {
+    height: 200px; overflow: hidden;
+    background: linear-gradient(135deg, var(--sky), #0d2a44);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem; color: rgba(255,255,255,.2);
+    position: relative;
+  }
+  .mentor-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s;
+  }
+  .mentor-card:hover .mentor-img-wrap img { transform: scale(1.05); }
+  .mentor-initials {
+    position: absolute; font-family: 'Syne', sans-serif;
+    font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,.5);
+  }
+  .mentor-info { padding: 1.3rem; }
+  .mentor-name {
+    font-family: 'Syne', sans-serif; font-size: 1rem;
+    font-weight: 700; margin-bottom: .2rem;
+  }
+  .mentor-role { font-size: .8rem; color: var(--gold); font-weight: 500; }
+  .mentor-bio { font-size: .82rem; color: var(--muted); margin-top: .5rem; line-height: 1.5; }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials {
+    padding: 7rem 4rem;
+    background: #0d111a; color: white;
+  }
+  #testimonials .section-title { color: white; }
+  #testimonials .section-sub { color: rgba(255,255,255,.5); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+  .tcard {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 1rem; padding: 2rem;
+    transition: border-color .2s;
+  }
+  .tcard:hover { border-color: rgba(200,151,42,.4); }
+  .tcard-stars { color: var(--gold); font-size: .9rem; margin-bottom: 1rem; }
+  .tcard-text { font-size: .95rem; line-height: 1.7; color: rgba(255,255,255,.75); margin-bottom: 1.5rem; }
+  .tcard-author { display: flex; align-items: center; gap: .8rem; }
+  .tcard-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center;
+    justify-content: center; font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: .9rem; color: var(--ink);
+    overflow: hidden;
+  }
+  .tcard-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .tcard-name { font-weight: 600; font-size: .9rem; }
+  .tcard-branch { font-size: .78rem; color: rgba(255,255,255,.4); }
+
+  /* ─── CENTRES ─── */
+  #contact { padding: 7rem 4rem; }
+  .centres-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+  .centre-card {
+    border: 1px solid var(--border);
+    border-radius: .9rem; padding: 1.6rem;
+    background: var(--card-bg);
+    transition: border-color .2s, transform .2s;
+  }
+  .centre-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .centre-name {
+    font-family: 'Syne', sans-serif; font-size: 1.05rem;
+    font-weight: 700; margin-bottom: .5rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .centre-name::before {
+    content: '📍'; font-size: .9rem;
+  }
+  .centre-addr { font-size: .83rem; color: var(--muted); line-height: 1.5; margin-bottom: .8rem; }
+  .centre-contact { font-size: .82rem; color: var(--sky); font-weight: 500; }
+  .centre-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .8rem; }
+  .ctag {
+    font-size: .68rem; padding: .2rem .55rem;
+    border: 1px solid var(--border); border-radius: 2rem; color: var(--muted);
+  }
+  .map-link {
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-size: .78rem; color: var(--gold);
+    text-decoration: none; margin-top: .8rem; font-weight: 500;
+  }
+  .map-link:hover { text-decoration: underline; }
+
+  /* ─── FAQ ─── */
+  #faq { padding: 7rem 4rem; background: var(--card-bg); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .faq-item {
+    border: 1px solid var(--border); border-radius: .9rem;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 1.3rem 1.5rem; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 500; font-size: .95rem;
+    transition: background .2s;
+    user-select: none;
+  }
+  .faq-q:hover { background: rgba(200,151,42,.06); }
+  .faq-q.open { background: var(--ink); color: var(--paper); }
+  .faq-chevron { transition: transform .25s; font-size: .8rem; }
+  .faq-q.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    font-size: .88rem; color: var(--muted); line-height: 1.7;
+    transition: max-height .35s ease, padding .35s;
+    padding: 0 1.5rem;
+  }
+  .faq-a.open { max-height: 200px; padding: 1rem 1.5rem 1.3rem; }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--gold);
+    padding: 5rem 4rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: 'IMS'; position: absolute;
+    font-family: 'Syne', sans-serif; font-size: 20rem; font-weight: 800;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    opacity: .05; pointer-events: none; white-space: nowrap;
+  }
+  .cta-banner h2 {
+    font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 1rem; position: relative; z-index: 1;
+  }
+  .cta-banner p { color: rgba(10,10,15,.65); font-size: 1.05rem; margin-bottom: 2.2rem; position: relative; z-index: 1; }
+  .cta-form {
+    display: flex; gap: .8rem; justify-content: center;
+    flex-wrap: wrap; position: relative; z-index: 1;
+  }
+  .cta-form input {
+    padding: .85rem 1.4rem; border: none;
+    border-radius: .4rem; font-size: .95rem;
+    font-family: 'DM Sans', sans-serif;
+    width: 280px; outline: none;
+    background: white; color: var(--ink);
+  }
+  .cta-form input::placeholder { color: #aaa; }
+  .cta-form button {
+    padding: .85rem 2rem; background: var(--ink); color: white;
+    border: none; border-radius: .4rem;
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: .95rem; cursor: pointer;
+    transition: opacity .2s;
+  }
+  .cta-form button:hover { opacity: .8; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: var(--paper);
+    padding: 4rem 4rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand .nav-logo { font-size: 1.8rem; }
+  .footer-brand p {
+    font-size: .88rem; color: rgba(245,242,235,.5);
+    line-height: 1.7; margin-top: 1rem; max-width: 280px;
+  }
+  .footer-col h4 {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: .85rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: .6rem; }
+  .footer-col a {
+    font-size: .88rem; color: rgba(245,242,235,.5);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--paper); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 2rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { font-size: .82rem; color: rgba(245,242,235,.35); }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; color: rgba(245,242,235,.5);
+    text-decoration: none; transition: border-color .2s, color .2s;
+  }
+  .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #home { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-visual { display: none; }
+    #courses, #why, #team, #testimonials, #contact, #faq, .cta-banner, footer { padding: 5rem 1.5rem; }
+    .why-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2,1fr); }
+    .faq-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-banner { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">IMS<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#why">Why IMS</a></li>
+    <li><a href="#team">Mentors</a></li>
+    <li><a href="#contact">Centres</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta" class="nav-cta">Enroll Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Delhi's #1 Test Prep Institute</div>
+    <h1>Crack <em>CAT, CLAT,</em><br>GMAT & Beyond</h1>
+    <p class="hero-sub">Four decades of excellence. 75,000+ students. Personalised mentoring by IIM & top-college alumni. Your dream B-school starts here.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Book Free Demo</a>
+      <a href="#courses" class="btn-ghost">Explore Courses</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+      <div>
+        <div class="stat-num">75K+</div>
+        <div class="stat-label">Students Yearly</div>
+      </div>
+      <div>
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Centres Nationwide</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-1">
+        <div class="hcard-exam">CAT 2024</div>
+        <div class="hcard-title">IIM Admits</div>
+        <div class="hcard-score">🏆 3,500+ IIM Calls Generated</div>
+      </div>
+      <div class="hcard hcard-2">
+        <div class="hcard-exam">GMAT Focus</div>
+        <div class="hcard-title">Score 705+</div>
+        <div class="hcard-score">📈 Expert Mentorship & Mock Tests</div>
+      </div>
+      <div class="hcard hcard-3">
+        <div class="hcard-icon">⚖️</div>
+        <div class="hcard-title">CLAT</div>
+        <div class="hcard-score">Top NLU Admits</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item"><span>✦</span> CAT Coaching</span>
+    <span class="ticker-item"><span>✦</span> IPMAT / BBA</span>
+    <span class="ticker-item"><span>✦</span> CLAT & Law</span>
+    <span class="ticker-item"><span>✦</span> GMAT</span>
+    <span class="ticker-item"><span>✦</span> GRE</span>
+    <span class="ticker-item"><span>✦</span> SAT</span>
+    <span class="ticker-item"><span>✦</span> GATE</span>
+    <span class="ticker-item"><span>✦</span> IELTS</span>
+    <span class="ticker-item"><span>✦</span> CUET</span>
+    <span class="ticker-item"><span>✦</span> Princeton Review Partner</span>
+    <span class="ticker-item"><span>✦</span> CAT Coaching</span>
+    <span class="ticker-item"><span>✦</span> IPMAT / BBA</span>
+    <span class="ticker-item"><span>✦</span> CLAT & Law</span>
+    <span class="ticker-item"><span>✦</span> GMAT</span>
+    <span class="ticker-item"><span>✦</span> GRE</span>
+    <span class="ticker-item"><span>✦</span> SAT</span>
+    <span class="ticker-item"><span>✦</span> GATE</span>
+    <span class="ticker-item"><span>✦</span> IELTS</span>
+    <span class="ticker-item"><span>✦</span> CUET</span>
+    <span class="ticker-item"><span>✦</span> Princeton Review Partner</span>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-label reveal">Our Programs</div>
+  <h2 class="section-title reveal">Coaching for Every<br>Competitive Exam</h2>
+  <p class="section-sub reveal">Classroom, online, and hybrid options — designed by certified experts who've aced these exams themselves.</p>
+  <div class="courses-grid">
+    <div class="course-card reveal">
+      <div class="course-tag tag-mba">MBA Entrance</div>
+      <div class="course-name">CAT Coaching</div>
+      <div class="course-desc">India's most trusted CAT prep with 40 years of expertise. Advanced mock tests, personalised mentoring, and 99th percentile faculty.</div>
+      <div class="course-exams">
+        <span class="exam-pill">CAT</span><span class="exam-pill">XAT</span><span class="exam-pill">NMAT</span><span class="exam-pill">SNAP</span><span class="exam-pill">IIFT</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-ug">UG Management</div>
+      <div class="course-name">IPMAT / BBA</div>
+      <div class="course-desc">Gain entry to IIM Indore, IIM Rohtak, NMIMS and other top UG management programs with our specialised coaching.</div>
+      <div class="course-exams">
+        <span class="exam-pill">IPMAT</span><span class="exam-pill">BBA</span><span class="exam-pill">SET</span><span class="exam-pill">NPAT</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-law">Law Entrance</div>
+      <div class="course-name">CLAT & Law</div>
+      <div class="course-desc">Targeted preparation for CLAT and other law entrances targeting top NLUs, Symbiosis Law, NMIMS Law, and OP Jindal.</div>
+      <div class="course-exams">
+        <span class="exam-pill">CLAT</span><span class="exam-pill">AILET</span><span class="exam-pill">SLAT</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-engg">Engineering</div>
+      <div class="course-name">GATE Coaching</div>
+      <div class="course-desc">Unlock PSU jobs at Maharatna companies and M.Tech seats at IITs with IMS's comprehensive GATE coaching.</div>
+      <div class="course-exams">
+        <span class="exam-pill">GATE</span><span class="exam-pill">PSU</span><span class="exam-pill">M.Tech</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-intl">Study Abroad</div>
+      <div class="course-name">GMAT / GRE</div>
+      <div class="course-desc">Target 705+ on GMAT or a top GRE score for MBA and graduate programs worldwide with expert mentorship and mock tests.</div>
+      <div class="course-exams">
+        <span class="exam-pill">GMAT</span><span class="exam-pill">GRE</span><span class="exam-pill">Admission Consulting</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-intl">Study Abroad</div>
+      <div class="course-name">SAT / IELTS</div>
+      <div class="course-desc">Score high on SAT for US university admissions, or ace IELTS for English-proficiency requirements globally. Deadline-focused prep.</div>
+      <div class="course-exams">
+        <span class="exam-pill">SAT</span><span class="exam-pill">IELTS</span><span class="exam-pill">TOEFL</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-ug">UG Entrance</div>
+      <div class="course-name">CUET</div>
+      <div class="course-desc">Get into top central universities including DU, JNU, BHU and others with our focused CUET coaching and mock test series.</div>
+      <div class="course-exams">
+        <span class="exam-pill">CUET</span><span class="exam-pill">DU Entrance</span>
+      </div>
+    </div>
+    <div class="course-card reveal">
+      <div class="course-tag tag-mba">MBA Prep</div>
+      <div class="course-name">GD-PI & WAT</div>
+      <div class="course-desc">Master Group Discussions, Personal Interviews, and Written Ability Tests with IMS's intensive GDPI workshops led by IIM alumni.</div>
+      <div class="course-exams">
+        <span class="exam-pill">GD</span><span class="exam-pill">PI</span><span class="exam-pill">WAT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IMS -->
+<section id="why">
+  <div class="section-label reveal">Why Choose Us</div>
+  <h2 class="section-title reveal">Built for Toppers.<br>Trusted for Decades.</h2>
+  <p class="section-sub reveal">Every element of our coaching is engineered to maximise your score and minimise wasted effort.</p>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">🎓</div>
+      <div class="why-title">Expert-Designed Programs</div>
+      <div class="why-text">Every course is built by 99th-percentile faculty who are IIM/top-college alumni. They know exactly what it takes.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🏛️</div>
+      <div class="why-title">40-Year Legacy</div>
+      <div class="why-text">India's first management coaching institute, now a 150+ centre network trusted by 75,000+ students every year.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🤝</div>
+      <div class="why-title">Princeton Review Partner</div>
+      <div class="why-text">India's exclusive Princeton Review partner for GMAT, GRE, SAT, IELTS — world-class US material, local expertise.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📊</div>
+      <div class="why-title">AI-Adaptive Mock Tests</div>
+      <div class="why-text">Our mock tests replicate real exam conditions and provide detailed analytics to sharpen your weak areas systematically.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💬</div>
+      <div class="why-title">1-on-1 Mentoring</div>
+      <div class="why-text">Personalised mentor sessions, WhatsApp doubt-clearing, and progress tracking — not just classes but real guidance.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🌐</div>
+      <div class="why-title">Classroom + Online</div>
+      <div class="why-text">Choose in-person at any Delhi centre, fully live online, or a hybrid blend — same expert-led quality wherever you are.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="reveal">
+    <div class="strip-num" data-target="75000">0</div>
+    <div class="strip-label">Students Every Year</div>
+  </div>
+  <div class="reveal">
+    <div class="strip-num" data-target="150">0</div>
+    <div class="strip-label">Centres Nationwide</div>
+  </div>
+  <div class="reveal">
+    <div class="strip-num" data-target="40">0</div>
+    <div class="strip-label">Years of Excellence</div>
+  </div>
+  <div class="reveal">
+    <div class="strip-num" data-target="30">0</div>
+    <div class="strip-label">Exams Covered</div>
+  </div>
+</div>
+
+<!-- MENTORS -->
+<section id="team">
+  <div class="section-label reveal">The Faculty</div>
+  <h2 class="section-title reveal">Learn from the Best</h2>
+  <p class="section-sub reveal">Our mentors are 99th-percentile scorers, IIM / top university alumni, and passionate educators with 10–28 years of teaching experience.</p>
+  <div class="mentors-scroll" id="mentorsGrid">
+    <!-- JS rendered -->
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label reveal">Success Stories</div>
+  <h2 class="section-title reveal">Hear It from Our Alumni</h2>
+  <p class="section-sub reveal">Real students. Real results. Real journeys to top B-schools and universities worldwide.</p>
+  <div class="testimonials-grid">
+    <div class="tcard reveal">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"IMS helped me channel my preparation with the right strategy and consistent mock practice. The faculty's support and structured guidance made all the difference."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar"><img src="https://www.imsindia.com/center/delhi/img/testimonial/Anya-Jain.jpg" onerror="this.style.display='none';this.parentNode.textContent='AJ'"></div>
+        <div>
+          <div class="tcard-name">Anya Jain</div>
+          <div class="tcard-branch">IMS Pitampura</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard reveal">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"Incredibly grateful to IMS India for their unwavering support and expert guidance. The structured material, insightful mock tests, and dedicated mentorship truly made the difference."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar"><img src="https://www.imsindia.com/center/delhi/img/testimonial/Lakshay-Gupta.jpg" onerror="this.style.display='none';this.parentNode.textContent='LG'"></div>
+        <div>
+          <div class="tcard-name">Lakshay Gupta</div>
+          <div class="tcard-branch">IMS Pitampura</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard reveal">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"IMS really helped me in my IPMAT preparation through interactive classes and the IMS portal — video solutions for every question. I'd recommend IMS to anyone preparing for IPMAT."</p>
+      <div class="tcard-author">
+        <div class="tcard-avatar"><img src="https://www.imsindia.com/center/delhi/img/testimonial/Harshit-Bohra.jpg" onerror="this.style.display='none';this.parentNode.textContent='HB'"></div>
+        <div>
+          <div class="tcard-name">Harshit Bohra</div>
+          <div class="tcard-branch">IMS Paschim Vihar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CENTRES -->
+<section id="contact">
+  <div class="section-label reveal">Find Us</div>
+  <h2 class="section-title reveal">IMS Centres Near You<br>in Delhi NCR</h2>
+  <p class="section-sub reveal">Visit your nearest IMS branch for expert coaching, free counselling, and demo classes.</p>
+  <div class="centres-grid" id="centresGrid">
+    <!-- JS rendered -->
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label reveal">FAQs</div>
+  <h2 class="section-title reveal">Common Questions</h2>
+  <div class="faq-grid" id="faqGrid">
+    <!-- JS rendered -->
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="cta">
+  <h2>Ready to Start Your Journey?</h2>
+  <p>Book a free counselling session. No strings attached — just clarity on your path forward.</p>
+  <div class="cta-form">
+    <input type="text" placeholder="Your Name">
+    <input type="tel" placeholder="Phone Number">
+    <button onclick="alert('Thank you! An IMS counsellor will call you within 24 hours.')">Book Free Demo →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">IMS<span>.</span></a>
+      <p>India's first and most trusted management entrance coaching institute since 1977. 150+ centres, 30+ exams, one goal — your success.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#courses">CAT Coaching</a></li>
+        <li><a href="#courses">IPMAT / BBA</a></li>
+        <li><a href="#courses">CLAT / Law</a></li>
+        <li><a href="#courses">GATE</a></li>
+        <li><a href="#courses">GMAT / GRE</a></li>
+        <li><a href="#courses">SAT / IELTS</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Delhi Centres</h4>
+      <ul>
+        <li><a href="#contact">Connaught Place</a></li>
+        <li><a href="#contact">Pitampura</a></li>
+        <li><a href="#contact">Dwarka</a></li>
+        <li><a href="#contact">North Campus</a></li>
+        <li><a href="#contact">Kailash Colony</a></li>
+        <li><a href="#contact">Rajouri Garden</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:7045127127">70 4512 7127</a></li>
+        <li><a href="mailto:delhi@imsindia.com">delhi@imsindia.com</a></li>
+        <li><a href="https://imsindia.com" target="_blank">imsindia.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 IMS Learning Resources Pvt. Ltd. All Rights Reserved.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/imsindiaNCR/" target="_blank">f</a>
+      <a href="https://www.instagram.com/ims.india/" target="_blank">ig</a>
+      <a href="https://www.linkedin.com/school/ims-learning-resources/" target="_blank">in</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── DATA ───
+const mentors = [
+  { name: 'Aman Verma', role: 'Quant & LR/DI', bio: 'MDI Gurgaon alumnus. 10+ years experience. 99+ percentile in CAT multiple times.', img: 'https://www.imsindia.com/center/delhi/img/team/aman-verma.jpg' },
+  { name: 'Shaminder Singh', role: 'Chief Mentor', bio: 'Engineering background. 12+ years experience. Mentored 10,000+ students.', img: 'https://www.imsindia.com/center/delhi/img/team/shaminder-singh.jpg' },
+  { name: 'Lovesh Arora', role: 'Verbal Faculty', bio: 'MA English, Delhi University. 10+ years guiding students to top B-Schools.', img: 'https://www.imsindia.com/center/delhi/img/team/lovesh-arora.jpg' },
+  { name: 'Shabnam Sahni', role: 'Verbal Faculty', bio: 'Miranda House & IMT Ghaziabad alumna. 15+ years MNC experience, 10+ years in test prep.', img: 'https://www.imsindia.com/center/delhi/img/team/shabnam-sahni.jpg' },
+  { name: 'Siddharth Singhal', role: 'Lead Mentor & Verbal', bio: 'Hindu College & MDI, Gurgaon alumnus. Counselled 10,000+ students.', img: 'https://www.imsindia.com/center/delhi/img/team/siddharthsinghal.jpg' },
+  { name: 'Stuti Gupta', role: 'Verbal Faculty', bio: 'Princeton Review certified for GMAT, GRE, SAT, IELTS, TOEFL. Expert in international exams.', img: 'https://www.imsindia.com/center/delhi/img/team/stuti-gupta.jpg' },
+  { name: 'Ankit Srivastava', role: 'Verbal Faculty', bio: 'NSUT alumnus. 11 years experience. 99+ percentile in CAT VARC multiple times.', img: 'https://www.imsindia.com/center/delhi/img/team/Ankit-Srivastava.jpg' },
+  { name: 'Deepanshu Garg', role: 'QA/LRDI Faculty', bio: 'Engineering graduate. 9+ years. Multiple-time CAT QA & LRDI 99+ percentiler.', img: 'https://www.imsindia.com/center/delhi/img/team/Deepanshu-Garg.jpg' },
+];
+
+const centres = [
+  { name: 'Connaught Place', addr: 'UGF, Kanchenjunga Building, Barakhamba Road, Near Barakhamba Metro Gate 3, New Delhi - 110001', phone: '7045127127', email: 'delhi@imsindia.com', map: 'https://www.google.com/maps/place/IMS+Connaught+Place', tags: ['CAT','GMAT','GRE','IELTS','Admission Consulting'] },
+  { name: 'Pitampura', addr: '5th Floor, Tower B, Aggarwal Cyber Plaza (Above Zever Jewellers), Netaji Subhash Place, Pitampura, New Delhi', phone: '011 42770300 | 8810402671', email: 'pitampura@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','BBA','CLAT','GMAT','GRE'] },
+  { name: 'North Campus', addr: 'B-3, 1st Floor, Above CaratLane Store, Model Town, Opp. Model Town Metro Pillar 23, New Delhi - 110009', phone: '8657446668', email: 'northcampus@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','GRE','BBA','CLAT'] },
+  { name: 'Dwarka', addr: 'C-404, 2nd Floor, Ramphal Chowk, Sector 7, Dwarka - 110075', phone: '01145005115 | 8291899621', email: 'dwarka@imsindia.com', map: 'https://maps.app.goo.gl', tags: ['CAT','GMAT','GRE','BBA','CLAT','IELTS'] },
+  { name: 'Kailash Colony (South Delhi)', addr: 'F-1/A, Upper Ground Floor, East of Kailash, Near Kailash Colony Metro Station, New Delhi - 110065', phone: '8657446652', email: 'southdelhi@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','CUET','BBA','CLAT'] },
+  { name: 'Rajouri Garden (West Delhi)', addr: 'A2/41, First Floor (Above Trends), Rajouri Garden Metro Station Gate 8, New Delhi - 110027', phone: '01141447297 | 8657446669', email: 'rajouri@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','GRE','BBA','CLAT'] },
+  { name: 'East Delhi', addr: '602 V4 Towers, 6th Floor, Karkardooma Community Centre, Near Karkardooma Metro Station, New Delhi - 110092', phone: '01143062751 | 9540777464', email: 'eastdelhi@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','GRE','BBA','CLAT','IELTS'] },
+  { name: 'Noida - Sector 62', addr: 'C-56/28, 3rd Floor, Sector 62, Noida - 201301', phone: '8879127127', email: 'noida@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','GRE','BBA','CLAT','IELTS'] },
+  { name: 'Noida - Sector 18', addr: '804, 8th Floor, Wave Silver Tower, near Metro Station, Sector 18, Noida - 201301', phone: '8527343234', email: 'noida@imsindia.com', map: 'https://maps.app.goo.gl', tags: ['CAT','GMAT','GRE','BBA','CLAT'] },
+  { name: 'Gurgaon', addr: 'Ground Floor, M-33, Block M, Old DLF Colony, Sector 14, Gurugram - 122007', phone: '8657446667', email: 'gurgaon@imsindia.com', map: 'https://www.google.com/maps', tags: ['CAT','GMAT','GRE','BBA','CLAT','IELTS'] },
+  { name: 'Nehru Place (IMS Manya)', addr: 'Unit 6B & 10, Ground Floor, International Trade Tower, Nehru Place, New Delhi - 110019', phone: '8433926999', email: '', map: 'https://maps.app.goo.gl', tags: ['GMAT','GRE','SAT','IELTS','IGCSE/IB'] },
+  { name: 'North Campus (IMS Manya)', addr: 'Pillar 23, B-3, 1st Floor, above CaratLane, Model Town, New Delhi - 110009', phone: '9811206213', email: '', map: 'https://maps.app.goo.gl', tags: ['GMAT','GRE','SAT','IELTS','IGCSE/IB'] },
+];
+
+const faqs = [
+  { q: 'What courses are available at IMS Delhi?', a: 'IMS Delhi offers coaching for CAT, BBA/IPMAT, CLAT, GATE, GMAT, GRE, SAT, IELTS, CUET, and GD-PI, both in classroom and online modes.' },
+  { q: 'Where are the IMS Delhi centres located?', a: 'IMS has centres across Connaught Place, Pitampura, North Campus, Dwarka, Kailash Colony, Rajouri Garden, East Delhi, Noida, and Gurgaon.' },
+  { q: 'Are online coaching classes available?', a: 'Yes. IMS offers fully live online classes, recorded sessions for revision, and doubt-clearing via WhatsApp and Telegram — same quality as classroom.' },
+  { q: 'What is the batch size at IMS?', a: 'Batches are capped at ~30 students to ensure personalised attention, easy doubt clearing, and meaningful mentor interactions.' },
+  { q: 'Does IMS provide mock tests?', a: 'Yes — extensive AI-adaptive mock tests that simulate real exam conditions, complete with detailed performance analytics and national benchmarking.' },
+  { q: 'How do I enroll at IMS Delhi?', a: 'You can enroll online via the IMS website, call your nearest centre, or walk in for a free counselling session and demo class.' },
+  { q: 'What is the IMS CAT test series?', a: 'The IMS CAT test series includes full-length CAT-pattern mocks, section-wise drills, AI-driven analytics, video solutions, and national percentile rankings.' },
+  { q: 'Is IMS associated with The Princeton Review?', a: 'Yes — IMS is India\'s exclusive partner of The Princeton Review USA, providing world-class material for GMAT, GRE, SAT, IELTS, and TOEFL.' },
+];
+
+// ─── RENDER MENTORS ───
+document.getElementById('mentorsGrid').innerHTML = mentors.map(m => `
+  <div class="mentor-card reveal">
+    <div class="mentor-img-wrap">
+      <img src="${m.img}" alt="${m.name}" onerror="this.style.display='none'">
+    </div>
+    <div class="mentor-info">
+      <div class="mentor-name">${m.name}</div>
+      <div class="mentor-role">${m.role}</div>
+      <div class="mentor-bio">${m.bio}</div>
+    </div>
+  </div>
+`).join('');
+
+// ─── RENDER CENTRES ───
+document.getElementById('centresGrid').innerHTML = centres.map(c => `
+  <div class="centre-card reveal">
+    <div class="centre-name">${c.name}</div>
+    <div class="centre-addr">${c.addr}</div>
+    <div class="centre-contact">${c.phone}${c.email ? ' · ' + c.email : ''}</div>
+    <div class="centre-tags">${c.tags.map(t=>`<span class="ctag">${t}</span>`).join('')}</div>
+    <a class="map-link" href="${c.map}" target="_blank">View on Map →</a>
+  </div>
+`).join('');
+
+// ─── RENDER FAQS ───
+document.getElementById('faqGrid').innerHTML = faqs.map((f, i) => `
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      <span>${f.q}</span>
+      <span class="faq-chevron">▼</span>
+    </div>
+    <div class="faq-a">${f.a}</div>
+  </div>
+`).join('');
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+
+function observeAll() {
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+observeAll();
+
+// ─── COUNT UP ───
+function countUp(el, target) {
+  let start = 0;
+  const duration = 1500;
+  const step = Math.ceil(target / (duration / 16));
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = start.toLocaleString();
+    if (start >= target) { el.textContent = target >= 1000 ? target.toLocaleString()+'+' : target+'+'; clearInterval(timer); }
+  }, 16);
+}
+
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(el => countUp(el, +el.dataset.target));
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+statsObserver.observe(document.querySelector('.stats-strip'));
+
+// ─── RE-OBSERVE DYNAMICALLY ADDED REVEALS ───
+observeAll();
+
+// ─── NAV SHRINK ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.padding = window.scrollY > 50 ? '.8rem 4rem' : '1.2rem 4rem';
+});
+</script>
+</body>
+</html>
